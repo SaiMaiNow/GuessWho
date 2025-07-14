@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import HomePage from './pages/home'
 import RoomPage from './pages/room'
+import ErrorPage from './pages/error'
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/room" element={<RoomPage />} />
           <Route path="/contact" element={<div>Contact</div>} />
+          <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
     </>
