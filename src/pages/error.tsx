@@ -4,7 +4,7 @@ const ErrorPage = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300 ">
       <h1 className="text-8xl font-bold text-red-500 mb-2">404</h1>
       <h2 className="text-2xl font-semibold mb-2">The page you are looking for was not found.</h2>
       <p className="text-gray-500 mb-6">

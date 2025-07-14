@@ -2,10 +2,13 @@ import React from 'react'
 
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
+import GamePage from './game';
+
 function RoomPage() {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const code = searchParams.get('code');
+    const [status, setstatus] = React.useState(false);
 
     React.useEffect(() => {
         if (!code) {
@@ -13,8 +16,12 @@ function RoomPage() {
         }
     }, [code, navigate]);
 
+    if (!status && code) {
+        return <GamePage code={code} />;
+    }
+
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-50">
+        <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-100 via-blue-200 to-blue-300">
             <div className="bg-white rounded-2xl shadow-xl px-10 py-8 flex flex-col items-center w-full max-w-md">
                 <h1 className="text-3xl font-bold text-blue-700 mb-4">Room</h1>
                 <p className="text-gray-600 mb-6">Share this room ID with your friends to join:</p>
@@ -37,7 +44,11 @@ function RoomPage() {
                         </li>
                     </ul>
                 </div>
-                <button className="mt-8 w-full py-3 bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-xl font-semibold shadow-lg hover:from-blue-700 hover:to-blue-500 transition">
+                <button className="mt-8 w-full py-3 bg-gradient-to-r from-blue-600 to-blue-400 text-white rounded-xl font-semibold shadow-lg hover:from-blue-700 hover:to-blue-500 transition" 
+                    onClick={() => {
+                        setstatus(true);
+                    }}
+                >
                     Start Game
                 </button>
             </div>
